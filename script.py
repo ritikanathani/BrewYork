@@ -1,5 +1,3 @@
-#Yafu worked on lines 1-24
-
 # import required packages
 from place import Place
 import urllib.request
@@ -56,3 +54,4 @@ def main():
 # main file to run by default
 if __name__ == '__main__':
   main()
+#We went through the older codes and worked on the last codes created to get a refined version of our final codes.
