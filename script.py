@@ -22,7 +22,7 @@ def places_api_request(request_url):
     encoding = web_data.info().get_content_charset('utf-8')
     return json.loads(data.decode(encoding))
 
-##Ritika worked on lines 26-57
+##Ritika worked on lines 26-56
 # the places list with a filter, 
 def init_places_list(json_data):
     places = []
