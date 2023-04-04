@@ -24,7 +24,7 @@ def places_api_request(request_url):
     return json.loads(data.decode(encoding))
 
 ##Ritika worked on lines 26-56
-# the places list with a filter, 
+# the places list with a filter:
 def init_places_list(json_data):
     places = []
 
@@ -35,6 +35,7 @@ def init_places_list(json_data):
     return places
 
 # Collect the data and print it according to the places class
+# this is for some locations not having a zipcode; if len of places_list is < 0, then the user will get a message that no places were found.
 def display_cafes(places_list):
     if len(places_list) > 0:
         for cafe in places_list:
