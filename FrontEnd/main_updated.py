@@ -12,7 +12,7 @@ app.secret_key = 'secretKey'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Rahul@123'
+app.config['MYSQL_PASSWORD'] = 'K@jol123!!'
 app.config['MYSQL_DB'] = 'LOGIN'
 
 mysql = MySQL(app)
