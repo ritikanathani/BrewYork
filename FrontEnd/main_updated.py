@@ -5,6 +5,10 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+import dpctl
+import numpy as np
+# Intel one api modules
+from numba import njit, prange
 
 app = Flask(__name__)
 
@@ -16,6 +20,46 @@ app.config['MYSQL_PASSWORD'] = 'K@jol123!!'
 app.config['MYSQL_DB'] = 'LOGIN'
 
 mysql = MySQL(app)
+
+def result_page(query):
+    df = pd.read_csv('All_nyc_cafes.csv',index_col=[0])
+    
+    print(df.head())
+    try:
+        output = df[df['zip_code'] == int(query)]
+        # locations = output[['name','location']]
+        normalized = pd.json_normalize(output['location'].apply(eval))
+        locations = pd.concat([output.drop('location',axis=1),normalized],axis=1)
+        locations['location_url'] = 'https://www.google.com/maps/search/' + locations['lat'].apply(str)+ ',' + locations['lng'].apply(str) + '/@' + locations['lat'].apply(str) + ',' + locations['lng'].apply(str) + ',17z'
+        results = locations.to_dict('records')
+        
+        locations_dict = locations[['name','lat','lng']].to_dict('records')
+        # print(results[:5])
+        # print(locations_dict[:5])
+
+    except Exception as e:
+        print(e)
+        output = []
+
+    return results,locations_dict
+
+
+@njit(parallel=True)
+def search_restaurants(query,location, radius=10):
+    with dpctl.device_context("opencl:gpu"):
+        # Perform optimized location search algorithm using Intel OneAPI toolkit
+        # This code is optimized for execution on a GPU using DPC++ programming language
+        # The algorithm should return a list of nearby cafes
+        _, cafes = result_page(query)
+        cafes = np.array(restaurants)
+        nearby_restaurants = []
+        for i in prange(restaurants.shape[0]):
+            if np.linalg.norm(location - restaurants[i]['location']) <= radius:
+                nearby_restaurants.append(restaurants[i]['name'])
+        return nearby_restaurants
+        
+       
+
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
@@ -95,8 +139,9 @@ def register():
 def home():
     # Check if user is loggedin
     if 'loggedin' in session:
+        results = search_restaurants(query,location)
         # User is loggedin show them the home page
-        return render_template('home.html', username=session['username'])
+        return render_template('home.html', username=session['username'],results=results)
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
 
