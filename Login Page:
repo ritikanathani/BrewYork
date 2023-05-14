@@ -1,0 +1,15 @@
+# HTML form code
+<form action="/login" method="POST">
+  <input type="text" name="username" placeholder="Username" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <input type="submit" value="Login">
+</form>
+
+# Backend code
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+    # Validate user credentials, perform authentication, etc.
+    ...
+    return render_template('login_success.html')
