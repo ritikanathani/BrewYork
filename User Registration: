@@ -1,0 +1,23 @@
+# HTML form code
+<form action="/register" method="POST">
+  <input type="text" name="username" placeholder="Username" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <!-- Additional optional fields -->
+  ...
+  <input type="submit" value="Register">
+</form>
+
+# Backend code (using a Python framework like Flask)
+from flask import Flask, request, render_template
+
+app = Flask(__name__)
+
+@app.route('/register', methods=['POST'])
+def register():
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['password']
+    # Process registration data, store in the database, etc.
+    ...
+    return render_template('registration_success.html')
