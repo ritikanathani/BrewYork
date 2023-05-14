@@ -1,0 +1,16 @@
+# HTML form code
+<form action="/coffee_search" method="GET">
+  <input type="text" name="zip_code" placeholder="Enter ZIP code" required>
+  <input type="submit" value="Search">
+</form>
+
+# Backend code
+@app.route('/coffee_search', methods=['GET'])
+def coffee_search():
+    zip_code = request.args.get('zip_code')
+    # Use geolocation APIs to convert zip code to coordinates
+    ...
+    # Perform coffee shop search based on coordinates
+    ...
+    # Return search results to the user
+    ...
