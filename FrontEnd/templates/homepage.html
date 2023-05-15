@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home Page</title>
+	<style>
+
+		
+
+		.login-btn {
+			color: #333;
+			display: block;
+			/* padding-top: 50px; */
+			margin: 0 auto;
+			padding: 10px 20px;
+			background-color: #007bff00;
+			color: #000000;
+			font-size: 16px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+		}
+
+		.login-btn:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-image: url("static/images/coffee2.jpeg");
+			background-size: cover;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #fbfbfb00;
+			color: #000000;
+			padding: 20px;
+			text-align: center;
+		}
+
+		nav {
+			background-color: #cccccc77;
+			padding: 10px;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+		}
+
+		nav li {
+			display: inline-block;
+			margin: 0 10px;
+		}
+
+		nav a {
+			color: #333;
+			text-decoration: none;
+			padding: 10px;
+		}
+
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		h2 {
+			color: #333;
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			margin-bottom: 5px;
+			padding-left: 20px;
+			position: relative;
+		}
+
+		li:before {
+			content: '\2022';
+			position: absolute;
+			left: 0;
+			color: #333;
+		}
+	</style>
+
+</head>
+<body>
+	<header>
+        <nav>
+			<a href="/"><img src="static/images/logo.png" alt="Logo" style="height: 150px;"></a>
+            <h1>Welcome to BrewYork</h1>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about-us">About Us</a></li>
+			</ul>
+		</nav>
+		
+	</header>
+	<main>
+		<section style="display: flex; justify-content: center; align-items: center; height: 70vh;">
+		  <button class="login-btn" onclick="window.location.href='/login'">Login/ Register</button>
+		</section>
+	</main>
+</body>
+</html>
