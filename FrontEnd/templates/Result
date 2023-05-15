@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Home</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		
+	</head>
+	
+	<body class="loggedin">
+		<nav class="navtop">
+			<div>
+				<h1>BrewYork</h1>
+                <a href="{{ url_for('home') }}"><i class="fa fa-home"></i>Home</a>
+				<a href="{{ url_for('logout') }}"><i class="fa fa-sign-out"></i>Logout</a>
+				<a href="{{ url_for('profile') }}"><i class="fa fa-sign-out"></i>Profile</a>
+				
+			</div>
+		</nav>
+		<div class="result-search-container">
+			<form action="/login/home" method="POST">
+				<input type="text" name="q" placeholder="Enter your Postal Code">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</form>
+		</div>
+        <div style="display: flex;">
+            <div style="border: 2px solid #ccc; padding: 10px; height: 450px; width: 700px; padding-left: 80px; overflow-y: scroll;">
+                {% if results %}
+                    {% for result in results %}
+                        <div style="margin-bottom: 10px;">
+                            <hr>
+                            <div style="font-weight: bold;">
+                                <a href="{{result.location_url}}" style="color: #010101;">{{ result.name }}</a>
+                            </div>
+                            <div style="color: #006621;">
+                                <a href="{{result.location_url}}" style="color: #006621;">{{ result.address }}</a>
+                            </div>
+                            <div style="color: #d6af12;">
+                                {% for i in range(result.rating|int) %}
+                                    &#9733;
+                                {% endfor %}
+                            </div>
+                            <div style="color: #000000;">Reviews: {{ result.total_users_rated }}</div>
+                            <hr>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div>No results found.</div>
+                {% endif %}
+            </div>
+            <div id="map" style="width: 500px; height: 450px;"></div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12096.646865424988!2d-73.975984!3d40.750568!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQyJzI5LjEiTiA3M8KwMjQnMjYuNyJX!5e0!3m2!1sen!2sus!4v1620851239029!5m2!1sen!2sus" 
+            width="500" height="450" style="border: 0px; padding-right: 10%;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+
+        
+	</body>
+</html>
+
+<!-- https://www.google.com/maps/place/28+Cottage+St,+Jersey+City,+NJ+07306/@40.734432,-74.0631767,17z/data=!3m1!4b1!4m6!3m5!1s0x89c25730dcf830d7:0x5c6e1a61da7b8606!8m2!3d40.734428!4d-74.0606018!16s%2Fg%2F11c131hf4h -->
+
