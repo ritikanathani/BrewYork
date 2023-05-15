@@ -1,0 +1,22 @@
+CREATE DATABASE IF NOT EXISTS `BREYORK` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `BREYORK`;
+
+CREATE TABLE IF NOT EXISTS `form` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `username` varchar(50) NOT NULL,
+    `password` varchar(255) NOT NULL,
+    `email` varchar(100) NOT NULL,
+    `first_name` varchar(100) NOT NULL,
+    `middle_name` varchar(100) NULL,
+    `last_name` varchar(100) NOT NULL,
+    `mobile_phone` varchar(10) NOT NULL,
+    `birth_day` varchar(20) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+USE `BREYORK`;
+
+INSERT INTO `form` (`id`, `username`, `password`, `email`, `first_name`, `middle_name`, `last_name`, `mobile_phone`, `birth_day`) VALUES (1, 'test', '1234', 'test@test.com', 'test', 'test', 'test', 'test', '06/23/1998');
+
+DROP table form;
+select * from form;
