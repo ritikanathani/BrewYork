@@ -1,36 +1,111 @@
-# version 3 4/24/2023
+# version 5 5/12/2023
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Register</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	</head>
-	<body>
-		<div class="register">
-			<h1>Register</h1>
-			<div class="links">
-				<a href="{{ url_for('login') }}">Login</a>
-				<a href="{{ url_for('register') }}" class="active">Register</a>
-			</div>
-			<form action="{{ url_for('register') }}" method="post" autocomplete="off">
-				<label for="username">
-					<i class="fa fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fa fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<label for="email">
-					<i class="fa fa-envelope-open"></i>
-				</label>
-				<input type="email" name="email" placeholder="Email" id="email" required>
-				<div class="msg">{{ msg }}</div>
-				<input type="submit" value="Register">
-			</form>
-		</div>
-	</body>
-</html>
+    <head>
+        <title>About Us - Find Restaurants and New Experiences Near You</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url("static/images/background_img2.jpeg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            header {
+                background-color: #f2f2f295;
+                padding: 10px;
+            }
+            
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            nav img {
+                height: 50px;
+            }
+            
+            nav ul {
+                display: flex;
+                list-style: none;
+            }
+            
+            nav li {
+                margin-left: 20px;
+            }
+            
+            nav a {
+                color: #333;
+                text-decoration: none;
+            }
+            
+            nav a:hover {
+                text-decoration: underline;
+            }
+            
+            h1 {
+                text-align: center;
+                margin: 50px 0;
+            }
+            
+            main {
+                margin: 0 auto;
+                max-width: 800px;
+                padding: 20px;
+            }
+            
+            section {
+                margin-bottom: 50px;
+            }
+            
+            h2 {
+                margin-bottom: 20px;
+            }
+            
+            p {
+                line-height: 1.5;
+            }
+            
+            footer {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
+        </style>
+</head>
+<body>
+    <header>
+        <nav>
+			<a href="/"><img src="static/images/logo.png" alt="Logo" style="height: 150px;padding-left: 10%;"></a>
+            <h1>About Us</h1>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="#">About Us</a></li>
+			</ul>
+		</nav>
+		
+	</header>
+	<main>
+		<section>
+			<h2>Who We Are</h2>
+			<p>We are a website that helps you discover new restaurants and experiences near you. Our mission is to make it easy for people to explore new places, try new things, and connect with their communities.</p>
+		</section>
+		<section>
+			<h2>Our History</h2>
+			<p>Our website was founded in 2015 by a group of foodies and adventurers who wanted to share their love of food and travel with others. Since then, we have grown to become a leading resource for people who want to discover new restaurants, bars, cafes, and other experiences.</p>
+		</section>
+		<section>
+			<h2>Our Team</h2>
+			<p>We have a team of passionate professionals who are dedicated to helping people discover new things. Our team includes foodies, adventurers, designers, developers, and marketers who all share a love of exploring new places and trying new things.</p>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Find Restaurants and New Experiences Near You</p>
+	</footer>
+</body>
+</html> 
